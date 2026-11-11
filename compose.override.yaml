@@ -3,8 +3,17 @@ services:
 ###> doctrine/doctrine-bundle ###
   database:
     ports:
-      - "5432"
+    # 3310 : port de mon pc (pas 3306 car wamp l'utilise)-> 3306 port de MariaDB dans le conteneur
+      - "3310:3306"
 ###< doctrine/doctrine-bundle ###
+  mongodb:
+    ports: 
+      - "27017:27017"
+
+  phpmyadmin:
+    ports:
+    # phpmyamdin s'ouvrira sur localhost:8080
+      - "8080:80"
 
 ###> symfony/mailer ###
   mailer:
