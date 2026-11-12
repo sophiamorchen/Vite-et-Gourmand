@@ -1,25 +1,74 @@
 
 services:
+# ci dessous : repère pour symfony, 
 ###> doctrine/doctrine-bundle ###
+#BD relationelle MariaDB
   database:
-    image: postgres:${POSTGRES_VERSION:-16}-alpine
+    # 11.8 = même version que sur alwaysdata
+    image: mariadb:${MARIADB_VERSION:-11.8}
     environment:
-      POSTGRES_DB: ${POSTGRES_DB:-app}
-      # You should definitely change the password in production
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-!ChangeMe!}
-      POSTGRES_USER: ${POSTGRES_USER:-app}
+      # nom de la base crée au 1er lancement du conteneur
+      MARIADB_DATABASE: ${MARIADB_DATABASE:-vite_et_gourmand}
+      # on essaye dabord d'utiliser la variable MARIADB_USER si elle existe, 
+      # sinon on prend app, utilisateur utilisé par symfony 
+      # c'est la signification du " :- 
+      MARIADB_USER: ${MARIADB_USER:-app}
+      # le mot de passe de symfony, utilisé en local seulement 
+      MARIADB_PASSWORD: ${MARIADB_PASSWORD:-app_password}
+      # mot de passe de l'admin de la base (user -> root)
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD:-root_password}
     healthcheck:
-      test: ["CMD", "pg_isready", "-d", "${POSTGRES_DB:-app}", "-U", "${POSTGRES_USER:-app}"]
+    # vérification qui concerne l'ordre de démarrage des conteneurs : vérifier que la base répond -> les conteneurs uqi ont un "depends-on" en ont besoin
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
       timeout: 5s
       retries: 5
       start_period: 60s
     volumes:
-      - database_data:/var/lib/postgresql/data:rw
-      # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
-      # - ./docker/db/data:/var/lib/postgresql/data:rw
+    #conservation des données même si le conteneur s'arrête ( persistance des données)
+    # volume nommé ( et non un bind-mount) (rw = valeur par défaut, je la laisse pour m'en souvenir)
+      - database_data:/var/lib/mysql:rw
+
 ###< doctrine/doctrine-bundle ###
+
+#BD non-relationelle / NoSQL MongoDB
+  mongodb:
+    image: mongo:8.0
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER:-app}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD:-app_password}
+    volumes:
+    - mongodb_data:/data/db:rw
+
+# interface visuelle pour mariaDB
+  phpmyadmin:
+    image: phpmyadmin:5.2
+    environment:
+      PMA_HOST: database
+    depends_on:
+      database:
+        condition: service_healthy
+    # démarre après MariaDB (seulement si le healthcheck est bon) 
+
+
+  app:
+  # ici je n'utilise pas une image toute prête de docker , mais une que j'ai construite moi, depuis le Dockerfile
+    build: 
+    # dossier où Docker trouve le Dockerfile et symfony.conf
+      context: ./docker/php
+    volumes:
+    # bind-mount : tout mon projet est branché dans /var/www/html (changements visibles tout de suite).
+    # Apache ne montre que public/ (réglé dans le Dockerfile) ; PHP lit le reste (src/, config/, vendor/).
+    - ./:/var/www/html
+    environment:
+    # dans Docker, Symfony joint MariaDB par son nom de service et son port interne
+      DATABASE_URL: "mysql://${MARIADB_USER:-app}:${MARIADB_PASSWORD:-app_password}@database:3306/${MARIADB_DATABASE:-vite_et_gourmand}?serverVersion=11.8.9-MariaDB&charset=utf8mb4"
+    depends_on:
+      database:
+      # démarre quand MariaDB est prête
+        condition: service_healthy
 
 volumes:
 ###> doctrine/doctrine-bundle ###
   database_data:
 ###< doctrine/doctrine-bundle ###
+  mongodb_data:

@@ -1,10 +1,32 @@
+# compose.override.yaml = réglages pour le DEVELOPPEMENT uniquement
+# docker compose le fusionne automatiquement avec le compose.yml lors du docker compose up 
+# Ici j'ouvre des ports sur mon pc pour accéder aux services depuis windows
+# En produ ne pas l'utiliser. Seul le site doit être accessible (ports 80 - 443)
+# les bases n'ont pas besoin de port : app les joint de l'intérieur de docker
+# via le réseau privé de docker 
+
+# là, ils peuvent se parler entre eux, mais personne ne peut y entrer, sauf par un port qu'on ouvre exprès
 
 services:
 ###> doctrine/doctrine-bundle ###
   database:
     ports:
-      - "5432"
+    # 3310 : port de mon pc (pas 3306 car wamp l'utilise)-> 3306 port de MariaDB dans le conteneur
+      - "3310:3306"
 ###< doctrine/doctrine-bundle ###
+  mongodb:
+    ports: 
+      - "27017:27017"
+
+  phpmyadmin:
+    ports:
+    # phpmyamdin s'ouvrira sur localhost:8080
+      - "8080:80"
+
+  app: 
+    ports: 
+    # port 8000 de mon pc -> port 80 d'Apache dans le conteneur
+      - "8000:80"
 
 ###> symfony/mailer ###
   mailer:
