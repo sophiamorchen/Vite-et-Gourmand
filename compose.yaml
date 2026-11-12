@@ -49,6 +49,24 @@ services:
         condition: service_healthy
     # démarre après MariaDB (seulement si le healthcheck est bon) 
 
+
+  app:
+  # ici je n'utilise pas une image toute prête de docker , mais une que j'ai construite moi, depuis le Dockerfile
+    build: 
+    # dossier où Docker trouve le Dockerfile et symfony.conf
+      context: ./docker/php
+    volumes:
+    # bind-mount : tout mon projet est branché dans /var/www/html (changements visibles tout de suite).
+    # Apache ne montre que public/ (réglé dans le Dockerfile) ; PHP lit le reste (src/, config/, vendor/).
+    - ./:/var/www/html
+    environment:
+    # dans Docker, Symfony joint MariaDB par son nom de service et son port interne
+      DATABASE_URL: "mysql://${MARIADB_USER:-app}:${MARIADB_PASSWORD:-app_password}@database:3306/${MARIADB_DATABASE:-vite_et_gourmand}?serverVersion=11.8.9-MariaDB&charset=utf8mb4"
+    depends_on:
+      database:
+      # démarre quand MariaDB est prête
+        condition: service_healthy
+
 volumes:
 ###> doctrine/doctrine-bundle ###
   database_data:
