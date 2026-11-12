@@ -56,7 +56,8 @@ services:
     # dossier où Docker trouve le Dockerfile et symfony.conf
       context: ./docker/php
     volumes:
-    # bind-mount : mon projet Windows branché dans le conteneur, changements visibles tout de suite
+    # bind-mount : tout mon projet est branché dans /var/www/html (changements visibles tout de suite).
+    # Apache ne montre que public/ (réglé dans le Dockerfile) ; PHP lit le reste (src/, config/, vendor/).
     - ./:/var/www/html
     environment:
     # dans Docker, Symfony joint MariaDB par son nom de service et son port interne
