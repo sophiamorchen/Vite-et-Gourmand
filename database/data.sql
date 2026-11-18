@@ -1,3 +1,4 @@
+SET NAMES utf8mb4;
 INSERT INTO role (nom) VALUES
     ('ROLE_ADMIN'),
     ('ROLE_EMPLOYE'),

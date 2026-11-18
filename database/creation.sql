@@ -1,36 +1,37 @@
+SET NAMES utf8mb4;
 DROP TABLE IF EXISTS avis, suivi, commande, plat_allergene, menu_plat, image, menu, utilisateur, allergene, plat, horaire, regime, theme, role;
 CREATE TABLE role(
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nom VARCHAR (255) NOT NULL UNIQUE CHECK (nom IN ('ROLE_ADMIN', 'ROLE_EMPLOYE', 'ROLE_UTILISATEUR'))
-);
+)  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE theme(
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nom VARCHAR(255)NOT NULL UNIQUE
-);
+)  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE regime(
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nom VARCHAR(255) NOT NULL
-);
+)  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE horaire(
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     jour VARCHAR(50) NOT NULL UNIQUE,
     heure_ouverture TIME, 
     heure_fermeture TIME
-);
+)  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE plat(
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nom VARCHAR(255) NOT NULL ,
     type VARCHAR(255) NOT NULL CHECK (type IN ('entrée', 'plat', 'dessert'))
-);
+)  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE allergene(
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nom VARCHAR(255) NOT NULL
-);
+)  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE utilisateur(
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -45,7 +46,7 @@ CREATE TABLE utilisateur(
     actif BOOLEAN NOT NULL DEFAULT true,
     role_id INT NOT NULL,
     FOREIGN KEY(role_id) REFERENCES role(id)
-);
+)  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE menu(
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
@@ -59,14 +60,14 @@ CREATE TABLE menu(
     regime_id INT NOT NULL,
     FOREIGN KEY(theme_id) REFERENCES theme(id),
     FOREIGN KEY(regime_id) REFERENCES regime(id)
-);
+)  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE image(
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
     chemin_img VARCHAR(255) NOT NULL,
     menu_id INT NOT NULL,
     FOREIGN KEY(menu_id) REFERENCES menu(id) ON DELETE CASCADE
-);
+)  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 CREATE TABLE commande(
@@ -90,7 +91,7 @@ CREATE TABLE commande(
     FOREIGN KEY(menu_id) REFERENCES menu(id) ON DELETE RESTRICT,
     FOREIGN KEY(utilisateur_id) REFERENCES utilisateur(id) ON DELETE RESTRICT,
     CHECK(pret_materiel = true OR restitution_materiel IS NULL)
-);
+)  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create table avis(
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
@@ -99,7 +100,7 @@ Create table avis(
     statut VARCHAR(255) NOT NULL DEFAULT 'en attente' CHECK (statut IN ('en attente', 'validé', 'refusé')),
     commande_id INT NOT NULL UNIQUE, 
     FOREIGN KEY(commande_id) REFERENCES commande(id)
-);
+)  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE suivi(
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -107,7 +108,7 @@ CREATE TABLE suivi(
     date_heure DATETIME NOT NULL,
     commande_id INT NOT NULL,
     FOREIGN KEY(commande_id) REFERENCES commande(id) ON DELETE CASCADE
-);
+)  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE menu_plat(
     menu_id INT,
@@ -115,7 +116,7 @@ CREATE TABLE menu_plat(
     PRIMARY KEY (menu_id, plat_id),
     FOREIGN KEY(menu_id) REFERENCES menu(id) ON DELETE CASCADE,
     FOREIGN KEY(plat_id) REFERENCES plat(id) ON DELETE CASCADE
-);
+)  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE plat_allergene(
     plat_id INT,
@@ -123,4 +124,4 @@ CREATE TABLE plat_allergene(
     PRIMARY KEY (plat_id, allergene_id),
     FOREIGN KEY(plat_id) REFERENCES plat(id) ON DELETE CASCADE,
     FOREIGN KEY(allergene_id) REFERENCES allergene(id) ON DELETE CASCADE
-);
+)  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
