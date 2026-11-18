@@ -57,8 +57,7 @@ INSERT INTO allergene (nom) VALUES
 
 INSERT INTO utilisateur (prenom, nom, ville, telephone, email, mot_de_passe, role_id) VALUES
     ('Léa', 'Roux', 'Toulouse', '0100112233', 'lea.roux@test.fr', 'password_test', 2),
-    ('Luc', 'Brun', 'Toulouse', '0100223344', 'luc.brun@test.fr', 'password_test', 3),
-    ('Lili', 'Red', 'Toulouse', '0100112233', 'lili.red@test.fr', 'password_test', 1);
+    ('Luc', 'Brun', 'Toulouse', '0100223344', 'luc.brun@test.fr', 'password_test', 3);
 
 INSERT INTO menu (titre, description, prix, stock, nb_personne_minimum, conditions, theme_id, regime_id) VALUES
     ('de Pâques', 'Un repas de printemps pour fêter Pâques
