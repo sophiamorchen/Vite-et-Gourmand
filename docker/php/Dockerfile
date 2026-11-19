@@ -28,5 +28,9 @@ RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-av
 # réglage complémentaire pour Apache: si le fichier demandé n'existe pas, on le odnne a index.php qui, s'il ne ocnnait pas la route -> 404
 COPY symfony.conf /etc/apache2/conf-enabled/symfony.conf
 
+# fuseau horaire de PHP : heure de paris (comme sur alwaysdata)
+# doc de l'image PHP : réglages personnels se copient dans $PHP_INI_DIR/conf.d/
+COPY timezone.ini $PHP_INI_DIR/conf.d/timezone.ini
+
 # Dossier où je me place : là où sera mon site
 WORKDIR /var/www/html
