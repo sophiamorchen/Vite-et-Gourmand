@@ -11,13 +11,28 @@ parameters:
 services:
     # default configuration for services in *this* file
     _defaults:
-        autowire: true      # Automatically injects dependencies in your services.
+        autowire: true # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
     App\:
-        resource: '../src/'
+        resource: "../src/"
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    # DOC : https://symfony.com/doc/7.4/service_container/factories.html
+    # DOC : https://www.mongodb.com/docs/php-library/current/connect/client/
+    # j'écris les configurations pour fabriquer les objets de la bibliothèque mongodb/mongodb avec les bon réglages
+    # -> (à la place de Doctrine MongoDB ODM)
+    # -> plus simple pour une seule utilisation (les statistiques pour José)
+    # client MongoDB (bibliothèque mongodb/mongodb) : reçoit l'adresse de connexion
+    MongoDB\Client:
+        # ce que symfo donne au constructeur pour établir la connexion l'ors d'une demande par le code
+        arguments: ["%env(MONGODB_URL)%"]
+
+    # base Mongodb du projet : fabriquée par le client (méthode selectDatabase) avec le nom MONGODB_DB
+    MongoDB\Database:
+        factory: ['@MongoDB\Client', "selectDatabase"]
+        arguments: ["%env(MONGODB_DB)%"]
