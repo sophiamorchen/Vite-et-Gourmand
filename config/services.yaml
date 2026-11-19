@@ -22,8 +22,11 @@ services:
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
-    # DOC : https://root.packagist.org/packages/mongodb/symfony-bundle
-    # alternative légère à Doctrine MongoDB ODM
+    # DOC : https://symfony.com/doc/7.4/service_container/factories.html
+    # DOC : https://www.mongodb.com/docs/php-library/current/connect/client/
+    # j'écris les configurations pour fabriquer les objets de la bibliothèque mongodb/mongodb avec les bon réglages
+    # -> (à la place de Doctrine MongoDB ODM)
+    # -> plus simple pour une seule utilisation (les statistiques pour José)
     # client MongoDB (bibliothèque mongodb/mongodb) : reçoit l'adresse de connexion
     MongoDB\Client:
         # ce que symfo donne au constructeur pour établir la connexion l'ors d'une demande par le code
