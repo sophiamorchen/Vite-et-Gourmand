@@ -6,10 +6,11 @@ FROM php:8.3-apache
 # https://getcomposer.org/doc/00-intro.md#system-requirements
 # https://symfony.com/doc/7.4/setup.html#technical-requirements
 # extensions mongodb et pdo pour parler aux bdd
+#extension mongodb figée en 2.5.7 compatible avec mongodb/mongodb ^2.5 = même version que sur alwaysdata
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git unzip libicu-dev libssl-dev pkg-config \
     && docker-php-ext-install intl pdo_mysql opcache \
-    && pecl install mongodb \
+    && pecl install mongodb-2.5.7 \
     && docker-php-ext-enable mongodb \
     && rm -rf /var/lib/apt/lists/*
 
