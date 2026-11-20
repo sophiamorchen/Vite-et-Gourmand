@@ -27,6 +27,9 @@ services:
     ports: 
     # port 8000 de mon pc -> port 80 d'Apache dans le conteneur
       - "8000:80"
+    environment:
+      # en local, Symfony envoie les mails à Mailpit (nom du service : mailer, ports SMTP : 1025 )
+      MAILER_DSN: "smtp://mailer:1025"
 
 ###> symfony/mailer ###
   mailer:
