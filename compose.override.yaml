@@ -32,8 +32,10 @@ services:
   mailer:
     image: axllent/mailpit
     ports:
-      - "1025"
-      - "8025"
+      - "8025:8025"  # page web de mailpit, pour lire les mails (localhost:8025)
+      # c’est là que mon navigateur vient lire les mails. Il parle HTTP, le langage des pages web.
+      - "1025:1025"  # port où mailpit reçoit/attend les mails. C'est mon site qui les lui envoie
+      # c’est là que mon APP vient déposer les mails. Elle parle SMTP, le langage des mails.
     environment:
       MP_SMTP_AUTH_ACCEPT_ANY: 1
       MP_SMTP_AUTH_ALLOW_INSECURE: 1
