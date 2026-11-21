@@ -6,10 +6,11 @@ FROM php:8.3-apache
 # https://getcomposer.org/doc/00-intro.md#system-requirements
 # https://symfony.com/doc/7.4/setup.html#technical-requirements
 # extensions mongodb et pdo pour parler aux bdd
+#extension mongodb figée en 2.5.7 compatible avec mongodb/mongodb ^2.5 = même version que sur alwaysdata
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git unzip libicu-dev libssl-dev pkg-config \
     && docker-php-ext-install intl pdo_mysql opcache \
-    && pecl install mongodb \
+    && pecl install mongodb-2.5.7 \
     && docker-php-ext-enable mongodb \
     && rm -rf /var/lib/apt/lists/*
 
@@ -27,6 +28,10 @@ RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-av
 # (voir le fichier symfony.conf) =>  Toutes les adresses (/menus /contact etc...) sont envoyées à public/index.php
 # réglage complémentaire pour Apache: si le fichier demandé n'existe pas, on le odnne a index.php qui, s'il ne ocnnait pas la route -> 404
 COPY symfony.conf /etc/apache2/conf-enabled/symfony.conf
+
+# fuseau horaire de PHP : heure de paris (comme sur alwaysdata)
+# doc de l'image PHP : réglages personnels se copient dans $PHP_INI_DIR/conf.d/
+COPY timezone.ini $PHP_INI_DIR/conf.d/timezone.ini
 
 # Dossier où je me place : là où sera mon site
 WORKDIR /var/www/html

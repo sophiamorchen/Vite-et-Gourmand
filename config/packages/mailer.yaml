@@ -1,3 +1,7 @@
 framework:
     mailer:
-        dsn: '%env(MAILER_DSN)%'
+        #adresse du serveur de mails, lue par la variable MAILER_DSN
+        dsn: "%env(MAILER_DSN)%"
+        # envoi direct : le mail part pendant le chargement de la page, sans passer par Messenger
+        # sinon, la recette de Messenger met les mails en file d'attente, et il faudra un worker
+        message_bus: false
