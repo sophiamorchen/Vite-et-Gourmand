@@ -51,3 +51,14 @@ font-face : permet de définir une police d'écriture particulière chargée par
     text-transform: uppercase;
     font-weight: 700;
 }
+
+.vg-footer {
+    background-color: var(--vg-very-dark);
+    color: var(--vg-beige);
+    --bs-link-color-rgb: 247, 243, 236;
+    --bs-link-hover-color-rgb: 255, 255, 255;
+}
+
+.vg-footer a:hover {
+    text-decoration: none;
+}

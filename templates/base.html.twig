@@ -28,6 +28,7 @@
                 >
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
                 <div class="collapse navbar-collapse" id="navigationPrincipale">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link" href="{{ path('app_home') }}">Accueil</a></li>
@@ -42,5 +43,33 @@
         </nav>
 
         {% block body %}{% endblock %}
+        <footer class="vg-footer">
+            <div class="container py-4">
+                <div class="row">
+                    <div class="col-md text-center text-md-start mb-3 mb-md-0">
+                        <h2 class="h6 fw-bold">Horaires</h2>
+                        <ul class="list-unstyled mb-0">
+                            <li>Lundi : fermé</li>
+                            <li>Mardi : 9h00 – 18h00</li>
+                            <li>Mercredi : 9h00 – 18h00</li>
+                            <li>Jeudi : 9h00 – 18h00</li>
+                            <li>Vendredi : 9h00 – 19h00</li>
+                            <li>Samedi : 9h00 – 19h00</li>
+                            <li>Dimanche : 10h00 – 14h00</li>
+                        </ul>
+                    </div>
+                    {# col-md-auto : dès md (768 px), largeur du contenu, à droite ; en dessous, pleine largeur, sous les horaires  #}
+                    <div class="col-md-auto text-center text-md-start">
+                        <h2 class="h6 fw-bold">Informations</h2>
+                        <ul class="list-unstyled mb-0">
+                            <li><a href="#">Mentions légales</a></li>
+                            <li><a href="#"><abbr title="Conditions générales de vente">CGV</abbr></a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="text-center small mt-4 mb-0">© 2026 Vite & Gourmand. Tous droits réservés.</p>
+            </div>
+        </footer>
     </body>
 </html>
