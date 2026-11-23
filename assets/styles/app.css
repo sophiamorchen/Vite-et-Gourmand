@@ -1,3 +1,88 @@
-body {
-    background-color: skyblue;
+/*
+font-face : permet de définir une police d'écriture particulière chargée par mon site
+*/
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/montserrat-latin-wght-normal.woff2') format('woff2');
+    /* graisses allant de 100 à 900*/
+    font-weight: 100 900;
+    /* le fichier ne contient pas d'italique. <em> fonctionne tout de même*/
+    font-style: normal;
+    /* police de secours affichée au chargement*/
+    font-display: swap;
+}
+
+:root {
+    /* Ma charte :*/
+    /* boutons et liens :  */
+    --vg-primary: #8C6430;
+    /* header et texte :  */
+    --vg-dark: #3B2B1E;
+    /* étiquettes :  */
+    --vg-secondary: #B5AC97;
+    /* footer :  */
+    --vg-very-dark: #231C19;
+    /* fond de page : */
+    --vg-beige: #F7F3EC;
+
+    /* Remplacement des variables bootstrap */
+    --bs-body-bg: var(--vg-beige);
+    --bs-body-color: var(--vg-dark);
+    --bs-link-color-rgb: 140, 100, 48;
+    --bs-link-hover-color-rgb: 59, 43, 30;
+
+    /*system-ui = police du système du visiteur, sinon sans empattement*/
+    --bs-body-font-family: 'Montserrat', system-ui, sans-serif;
+}
+
+/* Focus clavier pour fond beige = focus foncé*/
+:focus-visible {
+    outline: 2px solid var(--vg-dark);
+    outline-offset: 2px;
+}
+
+.navbar.vg-navbar {
+    background-color: var(--vg-dark);
+    --bs-navbar-color: var(--vg-beige);
+    --bs-navbar-hover-color: var(--vg-beige);
+    --bs-navbar-active-color: #fff;
+
+}
+
+.vg-navbar .navbar-brand {
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.vg-navbar .nav-link {
+    text-underline-offset: 6px;
+}
+
+.vg-navbar .nav-link:hover,
+.vg-navbar .nav-link:focus-visible {
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+}
+
+.vg-navbar .nav-link.active {
+    text-decoration-line: underline;
+    text-decoration-thickness: 3px;
+}
+
+.vg-footer {
+    background-color: var(--vg-very-dark);
+    color: var(--vg-beige);
+    --bs-link-color-rgb: 247, 243, 236;
+    --bs-link-hover-color-rgb: 255, 255, 255;
+}
+
+.vg-footer a:hover {
+    text-decoration: none;
+}
+
+/* focus clavier sur fond foncé (nav + footer) : contour beige */
+.vg-navbar :focus-visible,
+.vg-footer :focus-visible {
+    outline: 2px solid var(--vg-beige);
+    box-shadow: none;
 }
