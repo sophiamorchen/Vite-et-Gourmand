@@ -28,12 +28,12 @@
                 >
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
+                {% set route = app.current_route %} 
                 <div class="collapse navbar-collapse" id="navigationPrincipale">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="{{ path('app_home') }}">Accueil</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ path('app_menus') }}">Menus</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ path('app_contact') }}">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link{% if route == 'app_home' %} active{% endif %}" {% if route == 'app_home' %} aria-current="page"{% endif %} href="{{ path('app_home') }}">Accueil</a></li>
+                        <li class="nav-item"><a class="nav-link{% if route == 'app_menus' %} active{% endif %}" {% if route == 'app_menus' %} aria-current="page"{% endif %} href="{{ path('app_menus') }}">Menus</a></li>
+                        <li class="nav-item"><a class="nav-link{% if route == 'app_contact' %} active{% endif %}" {% if route == 'app_contact' %} aria-current="page"{% endif %} href="{{ path('app_contact') }}">Contact</a></li>
                     </ul>
                     <ul class="navbar-nav">
                         <li class="nav-item"><a class="nav-link" href="#">Connexion</a></li>

@@ -42,14 +42,24 @@ font-face : permet de définir une police d'écriture particulière chargée par
     --bs-navbar-active-color: #fff;
 }
 
-.vg-navbar .nav-link:hover,
-.vg-navbar .nav-link:focus-visible {
-    text-decoration: underline;
-}
-
 .vg-navbar .navbar-brand {
     text-transform: uppercase;
     font-weight: 700;
+}
+
+.vg-navbar .nav-link {
+    text-underline-offset: 6px;
+}
+
+.vg-navbar .nav-link:hover,
+.vg-navbar .nav-link:focus-visible {
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+}
+
+.vg-navbar .nav-link.active {
+    text-decoration-line: underline;
+    text-decoration-thickness: 3px;
 }
 
 .vg-footer {
