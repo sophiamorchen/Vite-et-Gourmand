@@ -1,3 +1,17 @@
+/*
+font-face : permet de définir une police d'écriture particulière chargée par mon site
+*/
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/montserrat-latin-wght-normal.woff2') format('woff2');
+    /* graisses allant de 100 à 900*/
+    font-weight: 100 900;
+    /* le fichier ne contient pas d'italique. <em> fonctionne tout de même*/
+    font-style: normal;
+    /* police de secours affichée au chargement*/
+    font-display: swap;
+}
+
 :root {
     /* Ma charte :*/
     /* boutons et liens :  */
@@ -16,6 +30,9 @@
     --bs-body-color: var(--vg-dark);
     --bs-link-color-rgb: 140, 100, 48;
     --bs-link-hover-color-rgb: 59, 43, 30;
+
+    /*system-ui = police du système du visiteur, sinon sans empattement*/
+    --bs-body-font-family: 'Montserrat', system-ui, sans-serif;
 }
 
 .navbar.vg-navbar {
