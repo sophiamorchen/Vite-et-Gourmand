@@ -1,3 +1,31 @@
-body {
-    background-color: skyblue;
+:root {
+    /* Ma charte :*/
+    /* boutons et liens :  */
+    --vg-primary: #8C6430;
+    /* header et texte :  */
+    --vg-dark: #3B2B1E;
+    /* étiquettes :  */
+    --vg-secondary: #B5AC97;
+    /* footer :  */
+    --vg-very-dark: #231C19;
+    /* fond de page : */
+    --vg-beige: #F7F3EC;
+
+    /* Remplacement des variables bootstrap */
+    --bs-body-bg: var(--vg-beige);
+    --bs-body-color: var(--vg-dark);
+    --bs-link-color-rgb: 140, 100, 48;
+    --bs-link-hover-color-rgb: 59, 43, 30;
+}
+
+.navbar.vg-navbar {
+    background-color: var(--vg-dark);
+    --bs-navbar-color: #fff;
+    --bs-navbar-hover-color: #fff;
+    --bs-navbar-active-color: #fff;
+}
+
+.vg-navbar .nav-link:hover,
+.vg-navbar .nav-link:focus-visible {
+    text-decoration: underline;
 }

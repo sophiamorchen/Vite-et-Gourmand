@@ -12,14 +12,46 @@
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
 
-        {% set frankenphp_hot_reload = app.request.server.get('FRANKENPHP_HOT_RELOAD') %}
+        {# Ne sert pas, à supprimer #} 
+        {# {% set frankenphp_hot_reload = app.request.server.get('FRANKENPHP_HOT_RELOAD') %}
         {% if frankenphp_hot_reload %}
             <meta name="frankenphp-hot-reload:url" content="{{ frankenphp_hot_reload }}">
             <script src="https://cdn.jsdelivr.net/npm/idiomorph"></script>
             <script src="https://cdn.jsdelivr.net/npm/frankenphp-hot-reload/+esm" type="module"></script>
-        {% endif %}
+        {% endif %} #}
     </head>
     <body>
+        {# navbar-expand-lg : liens en ligne sur grand écran, cachés derrière le burger en dessous #}
+        <nav class="navbar vg-navbar navbar-expand-lg bg-vg-dark" data-bs-theme="dark">
+            <div class="container-fluid">  {# conteneur sur toute la largeur #}
+                {# Nom du site, cliquable : ramène à l'accueil #}
+                <a class="navbar-brand" href="{{ path('app_home') }}">Vite & Gourmand</a>
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navigationPrincipale"
+                    aria-controls="navigationPrincipale"
+                    aria-expanded="false"
+                    aria-label="Afficher ou masquer la navigation"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                {# Zone repliable : son id doit être le même que data-bs-target (sans le #) #}
+                <div class="collapse navbar-collapse" id="navigationPrincipale">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="{{ path('app_home') }}">Accueil</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Nos menus</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="#">Connexion</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
         {% block body %}{% endblock %}
     </body>
 </html>

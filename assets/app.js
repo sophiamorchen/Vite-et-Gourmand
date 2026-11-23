@@ -9,6 +9,7 @@ import './stimulus_bootstrap.js';
 // CSS de bootstrap 5.3 (téléchargé dans assets/vendor/ par importmap:require)
 // importé en prmeier : ainsi, mon css perso surchargera les règles BS
 
+import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './styles/app.css';
 
