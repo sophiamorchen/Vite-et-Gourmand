@@ -46,3 +46,8 @@ font-face : permet de définir une police d'écriture particulière chargée par
 .vg-navbar .nav-link:focus-visible {
     text-decoration: underline;
 }
+
+.vg-navbar .navbar-brand {
+    text-transform: uppercase;
+    font-weight: 700;
+}
