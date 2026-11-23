@@ -20,8 +20,8 @@
 
 .navbar.vg-navbar {
     background-color: var(--vg-dark);
-    --bs-navbar-color: #fff;
-    --bs-navbar-hover-color: #fff;
+    --bs-navbar-color: var(--vg-beige);
+    --bs-navbar-hover-color: var(--vg-beige);
     --bs-navbar-active-color: #fff;
 }
 
