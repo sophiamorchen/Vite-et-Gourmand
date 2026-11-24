@@ -3,28 +3,30 @@
 {% block title %}Accueil - {{ parent() }}{% endblock %}
 
 {% block body %}
-    <style>
-        .example-wrapper {
-            margin: 1em auto;
-            max-width: 800px;
-            width: 95%;
-            font: 18px/1.5 sans-serif;
-        }
-        .example-wrapper code {
-            background: #f5f5f5;
-            padding: 2px 6px;
-        }
-    </style>
+    <div class="container-fluid vg-container py-4">
+        <style>
+            .example-wrapper {
+                margin: 1em auto;
+                max-width: 800px;
+                width: 95%;
+                font: 18px/1.5 sans-serif;
+            }
+            .example-wrapper code {
+                background: #f5f5f5;
+                padding: 2px 6px;
+            }
+        </style>
 
-    <div class="example-wrapper">
-        <h1>On est bien chez {{ titre }}! ✅</h1>
+        <div class="example-wrapper">
+            <h1>On est bien chez {{ titre }}! ✅</h1>
 
-        Il ne reste plus qu'à faire  : 
-        <ul>
-            <li>le compte admin de José</li>
-            <li>la connexion à MongoDB</li>
-            <li>la configuration des mails</li>
-        </ul>
-        <h2>Et puis GOOOO le code de L'ECF</h2>
+            Il ne reste plus qu'à faire  : 
+            <ul>
+                <li>le compte admin de José</li>
+                <li>la connexion à MongoDB</li>
+                <li>la configuration des mails</li>
+            </ul>
+            <h2>Et puis GOOOO le code de L'ECF</h2>
+        </div>
     </div>
 {% endblock %}
