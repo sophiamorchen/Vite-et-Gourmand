@@ -1,3 +1,139 @@
-body {
-    background-color: skyblue;
+/*
+font-face : définit la police du site, chargée par mon site
+*/
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/montserrat-latin-wght-normal.woff2') format('woff2');
+    /* graisses allant de 100 à 900*/
+    font-weight: 100 900;
+    /* le fichier ne contient pas d'italique. <em> fonctionne tout de même*/
+    font-style: normal;
+    /* police de secours affichée au chargement*/
+    font-display: swap;
+}
+
+/* selecteur :root applique son code à la balise <html>*/
+:root {
+    /* Ma charte :*/
+    /* boutons et liens :  */
+    --vg-primary: #8C6430;
+    /* header et texte :  */
+    --vg-dark: #3B2B1E;
+    /* étiquettes :  */
+    --vg-secondary: #B5AC97;
+    /* footer :  */
+    --vg-very-dark: #231C19;
+    /* fond de page : */
+    --vg-beige: #F7F3EC;
+
+    /* variables bootstrap -> même nom, nouvelles valeurs */
+    --bs-body-bg: var(--vg-beige);
+    --bs-body-color: var(--vg-dark);
+    /* mon --vg-primary */
+    --bs-link-color-rgb: 140, 100, 48;
+    /* mon --vg-dark */
+    --bs-link-hover-color-rgb: 59, 43, 30;
+
+    /*system-ui = police du système du visiteur, sinon sans empattement*/
+    --bs-body-font-family: 'Montserrat', system-ui, sans-serif;
+}
+
+.btn-primary {
+    --bs-btn-bg: var(--vg-primary);
+    --bs-btn-border-color: var(--vg-primary);
+    --bs-btn-hover-bg: var(--vg-dark);
+    --bs-btn-hover-border-color: var(--vg-dark);
+    --bs-btn-active-bg: var(--vg-dark);
+    --bs-btn-active-border-color: var(--vg-dark);
+    /* mon primary */
+    --bs-btn-focus-shadow-rgb: 140, 100, 48;
+}
+
+.btn-outline-dark {
+    --bs-btn-color: var(--vg-dark);
+    --bs-btn-border-color: var(--vg-dark);
+    --bs-btn-hover-bg: var(--vg-dark);
+    --bs-btn-hover-border-color: var(--vg-dark);
+    --bs-btn-active-bg: var(--vg-dark);
+    --bs-btn-active-border-color: var(--vg-dark);
+    /* mon vg-dark */
+    --bs-btn-focus-shadow-rgb: 59, 43, 30;
+}
+
+/* Focus clavier pour fond beige = focus foncé*/
+:focus-visible {
+    outline: 2px solid var(--vg-dark);
+    outline-offset: 2px;
+}
+
+.vg-container {
+    max-width: 1440px;
+}
+
+/*---------------------NAVBAR------------------------------*/
+/* deux classes parce que autant de critères que .navbar[data-bs-theme=dark] de BS (=> égalité). Ici app.css gagne car chargé après  */
+.navbar.vg-navbar {
+    background-color: var(--vg-dark);
+    --bs-navbar-color: var(--vg-beige);
+    --bs-navbar-hover-color: var(--vg-beige);
+    --bs-navbar-active-color: #fff;
+}
+
+.vg-navbar .navbar-brand {
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.vg-navbar .nav-link {
+    text-underline-offset: 6px;
+}
+
+.vg-navbar .nav-link:hover,
+.vg-navbar .nav-link:focus-visible {
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+}
+
+.vg-navbar .nav-link.active {
+    text-decoration-line: underline;
+    text-decoration-thickness: 3px;
+}
+
+
+/*---------------------SECTION AVIS------------------------------*/
+.vg-avis {
+    background-color: var(--vg-secondary);
+}
+
+
+/*---------------------SECTION EQUIPE------------------------------*/
+.vg-chiffre {
+    border: 1px solid var(--vg-dark);
+}
+
+/*---------------------FOOTER------------------------------*/
+
+.vg-footer {
+    background-color: var(--vg-very-dark);
+    color: var(--vg-beige);
+    /* mon vg-beige*/
+    --bs-link-color-rgb: 247, 243, 236;
+    --bs-link-hover-color-rgb: 255, 255, 255;
+}
+
+.vg-footer a:hover {
+    text-decoration: none;
+}
+
+/* focus clavier */
+.btn:focus-visible {
+    outline: 2px solid var(--vg-dark);
+    outline-offset: 2px;
+}
+
+/* focus clavier */
+.vg-navbar :focus-visible,
+.vg-footer :focus-visible {
+    outline: 2px solid var(--vg-beige);
+    box-shadow: none;
 }
