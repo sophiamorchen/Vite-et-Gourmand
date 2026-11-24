@@ -1,5 +1,5 @@
 /*
-font-face : permet de définir une police d'écriture particulière chargée par mon site
+font-face : définit la police du site, chargée par mon site
 */
 @font-face {
     font-family: 'Montserrat';
@@ -38,49 +38,6 @@ font-face : permet de définir une police d'écriture particulière chargée par
     --bs-body-font-family: 'Montserrat', system-ui, sans-serif;
 }
 
-/* Focus clavier pour fond beige = focus foncé*/
-:focus-visible {
-    outline: 2px solid var(--vg-dark);
-    outline-offset: 2px;
-}
-
-/*---------------------NAVBAR------------------------------*/
-/* deux classes : autant de critères que .navbar[data-bs-theme=dark] de BS ; égalité , app.css gagne car chargé après  */
-.navbar.vg-navbar {
-    background-color: var(--vg-dark);
-    --bs-navbar-color: var(--vg-beige);
-    --bs-navbar-hover-color: var(--vg-beige);
-    --bs-navbar-active-color: #fff;
-
-}
-
-.vg-navbar .navbar-brand {
-    text-transform: uppercase;
-    font-weight: 700;
-}
-
-.vg-navbar .nav-link {
-    text-underline-offset: 6px;
-}
-
-.vg-navbar .nav-link:hover,
-.vg-navbar .nav-link:focus-visible {
-    text-decoration-line: underline;
-    text-decoration-thickness: 1px;
-}
-
-.vg-navbar .nav-link.active {
-    text-decoration-line: underline;
-    text-decoration-thickness: 3px;
-}
-
-/*---------------------MAIN------------------------------*/
-/*---------------------SECTION HERO------------------------------*/
-
-.vg-container {
-    max-width: 1440px;
-}
-
 .btn-primary {
     --bs-btn-bg: var(--vg-primary);
     --bs-btn-border-color: var(--vg-primary);
@@ -103,11 +60,56 @@ font-face : permet de définir une police d'écriture particulière chargée par
     --bs-btn-focus-shadow-rgb: 59, 43, 30;
 }
 
+/* Focus clavier pour fond beige = focus foncé*/
+:focus-visible {
+    outline: 2px solid var(--vg-dark);
+    outline-offset: 2px;
+}
+
+.vg-container {
+    max-width: 1440px;
+}
+
+/*---------------------NAVBAR------------------------------*/
+/* deux classes parce que autant de critères que .navbar[data-bs-theme=dark] de BS (=> égalité). Ici app.css gagne car chargé après  */
+.navbar.vg-navbar {
+    background-color: var(--vg-dark);
+    --bs-navbar-color: var(--vg-beige);
+    --bs-navbar-hover-color: var(--vg-beige);
+    --bs-navbar-active-color: #fff;
+}
+
+.vg-navbar .navbar-brand {
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.vg-navbar .nav-link {
+    text-underline-offset: 6px;
+}
+
+.vg-navbar .nav-link:hover,
+.vg-navbar .nav-link:focus-visible {
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+}
+
+.vg-navbar .nav-link.active {
+    text-decoration-line: underline;
+    text-decoration-thickness: 3px;
+}
+
+
 /*---------------------SECTION AVIS------------------------------*/
 .vg-avis {
     background-color: var(--vg-secondary);
 }
 
+
+/*---------------------SECTION EQUIPE------------------------------*/
+.vg-chiffre {
+    border: 1px solid var(--vg-dark)
+}
 
 /*---------------------FOOTER------------------------------*/
 
