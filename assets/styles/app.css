@@ -44,6 +44,7 @@ font-face : permet de définir une police d'écriture particulière chargée par
     outline-offset: 2px;
 }
 
+/*---------------------NAVBAR------------------------------*/
 /* deux classes : autant de critères que .navbar[data-bs-theme=dark] de BS ; égalité , app.css gagne car chargé après  */
 .navbar.vg-navbar {
     background-color: var(--vg-dark);
@@ -73,6 +74,13 @@ font-face : permet de définir une police d'écriture particulière chargée par
     text-decoration-thickness: 3px;
 }
 
+/*---------------------MAIN------------------------------*/
+/*---------------------SECTION HERO------------------------------*/
+
+.vg-container {
+    max-width: 1440px;
+}
+
 .btn-primary {
     --bs-btn-bg: var(--vg-primary);
     --bs-btn-border-color: var(--vg-primary);
@@ -95,9 +103,13 @@ font-face : permet de définir une police d'écriture particulière chargée par
     --bs-btn-focus-shadow-rgb: 59, 43, 30;
 }
 
-.vg-container {
-    max-width: 1440px;
+/*---------------------SECTION AVIS------------------------------*/
+.vg-avis {
+    background-color: var(--vg-secondary);
 }
+
+
+/*---------------------FOOTER------------------------------*/
 
 .vg-footer {
     background-color: var(--vg-very-dark);
