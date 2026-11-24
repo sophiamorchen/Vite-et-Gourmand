@@ -12,6 +12,7 @@ font-face : permet de définir une police d'écriture particulière chargée par
     font-display: swap;
 }
 
+/* selecteur :root applique son code à la balise <html>*/
 :root {
     /* Ma charte :*/
     /* boutons et liens :  */
@@ -25,10 +26,12 @@ font-face : permet de définir une police d'écriture particulière chargée par
     /* fond de page : */
     --vg-beige: #F7F3EC;
 
-    /* Remplacement des variables bootstrap */
+    /* variables bootstrap -> même nom, nouvelles valeurs */
     --bs-body-bg: var(--vg-beige);
     --bs-body-color: var(--vg-dark);
+    /* mon --vg-primary */
     --bs-link-color-rgb: 140, 100, 48;
+    /* mon --vg-dark */
     --bs-link-hover-color-rgb: 59, 43, 30;
 
     /*system-ui = police du système du visiteur, sinon sans empattement*/
@@ -41,6 +44,7 @@ font-face : permet de définir une police d'écriture particulière chargée par
     outline-offset: 2px;
 }
 
+/* deux classes : autant de critères que .navbar[data-bs-theme=dark] de BS ; égalité , app.css gagne car chargé après  */
 .navbar.vg-navbar {
     background-color: var(--vg-dark);
     --bs-navbar-color: var(--vg-beige);
@@ -67,6 +71,10 @@ font-face : permet de définir une police d'écriture particulière chargée par
 .vg-navbar .nav-link.active {
     text-decoration-line: underline;
     text-decoration-thickness: 3px;
+}
+
+.vg-container {
+    max-width: 1440px;
 }
 
 .vg-footer {
