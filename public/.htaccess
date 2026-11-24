@@ -1,0 +1,5 @@
+# Toute adresse qui n'est pas un vrai fichier (/menus, /contact ...) est envoyée à index.php
+# qui lance Symfony ; Symfony trouve ensuite la bonne route.
+# Même règle que FallBackResource dans docker/php/symfony.conf (Apache local)
+
+FallBackResource /index.php
