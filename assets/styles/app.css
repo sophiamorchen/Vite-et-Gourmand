@@ -1,5 +1,5 @@
 /*
-font-face : permet de définir une police d'écriture particulière chargée par mon site
+font-face : définit la police du site, chargée par mon site
 */
 @font-face {
     font-family: 'Montserrat';
@@ -38,19 +38,45 @@ font-face : permet de définir une police d'écriture particulière chargée par
     --bs-body-font-family: 'Montserrat', system-ui, sans-serif;
 }
 
+.btn-primary {
+    --bs-btn-bg: var(--vg-primary);
+    --bs-btn-border-color: var(--vg-primary);
+    --bs-btn-hover-bg: var(--vg-dark);
+    --bs-btn-hover-border-color: var(--vg-dark);
+    --bs-btn-active-bg: var(--vg-dark);
+    --bs-btn-active-border-color: var(--vg-dark);
+    /* mon primary */
+    --bs-btn-focus-shadow-rgb: 140, 100, 48;
+}
+
+.btn-outline-dark {
+    --bs-btn-color: var(--vg-dark);
+    --bs-btn-border-color: var(--vg-dark);
+    --bs-btn-hover-bg: var(--vg-dark);
+    --bs-btn-hover-border-color: var(--vg-dark);
+    --bs-btn-active-bg: var(--vg-dark);
+    --bs-btn-active-border-color: var(--vg-dark);
+    /* mon vg-dark */
+    --bs-btn-focus-shadow-rgb: 59, 43, 30;
+}
+
 /* Focus clavier pour fond beige = focus foncé*/
 :focus-visible {
     outline: 2px solid var(--vg-dark);
     outline-offset: 2px;
 }
 
-/* deux classes : autant de critères que .navbar[data-bs-theme=dark] de BS ; égalité , app.css gagne car chargé après  */
+.vg-container {
+    max-width: 1440px;
+}
+
+/*---------------------NAVBAR------------------------------*/
+/* deux classes parce que autant de critères que .navbar[data-bs-theme=dark] de BS (=> égalité). Ici app.css gagne car chargé après  */
 .navbar.vg-navbar {
     background-color: var(--vg-dark);
     --bs-navbar-color: var(--vg-beige);
     --bs-navbar-hover-color: var(--vg-beige);
     --bs-navbar-active-color: #fff;
-
 }
 
 .vg-navbar .navbar-brand {
@@ -73,13 +99,24 @@ font-face : permet de définir une police d'écriture particulière chargée par
     text-decoration-thickness: 3px;
 }
 
-.vg-container {
-    max-width: 1440px;
+
+/*---------------------SECTION AVIS------------------------------*/
+.vg-avis {
+    background-color: var(--vg-secondary);
 }
+
+
+/*---------------------SECTION EQUIPE------------------------------*/
+.vg-chiffre {
+    border: 1px solid var(--vg-dark);
+}
+
+/*---------------------FOOTER------------------------------*/
 
 .vg-footer {
     background-color: var(--vg-very-dark);
     color: var(--vg-beige);
+    /* mon vg-beige*/
     --bs-link-color-rgb: 247, 243, 236;
     --bs-link-hover-color-rgb: 255, 255, 255;
 }
@@ -88,7 +125,13 @@ font-face : permet de définir une police d'écriture particulière chargée par
     text-decoration: none;
 }
 
-/* focus clavier sur fond foncé (nav + footer) : contour beige */
+/* focus clavier */
+.btn:focus-visible {
+    outline: 2px solid var(--vg-dark);
+    outline-offset: 2px;
+}
+
+/* focus clavier */
 .vg-navbar :focus-visible,
 .vg-footer :focus-visible {
     outline: 2px solid var(--vg-beige);
