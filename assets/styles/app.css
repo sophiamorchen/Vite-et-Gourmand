@@ -108,7 +108,7 @@ font-face : définit la police du site, chargée par mon site
 
 /*---------------------SECTION EQUIPE------------------------------*/
 .vg-chiffre {
-    border: 1px solid var(--vg-dark)
+    border: 1px solid var(--vg-dark);
 }
 
 /*---------------------FOOTER------------------------------*/
