@@ -73,6 +73,28 @@ font-face : permet de définir une police d'écriture particulière chargée par
     text-decoration-thickness: 3px;
 }
 
+.btn-primary {
+    --bs-btn-bg: var(--vg-primary);
+    --bs-btn-border-color: var(--vg-primary);
+    --bs-btn-hover-bg: var(--vg-dark);
+    --bs-btn-hover-border-color: var(--vg-dark);
+    --bs-btn-active-bg: var(--vg-dark);
+    --bs-btn-active-border-color: var(--vg-dark);
+    /* mon primary */
+    --bs-btn-focus-shadow-rgb: 140, 100, 48;
+}
+
+.btn-outline-dark {
+    --bs-btn-color: var(--vg-dark);
+    --bs-btn-border-color: var(--vg-dark);
+    --bs-btn-hover-bg: var(--vg-dark);
+    --bs-btn-hover-border-color: var(--vg-dark);
+    --bs-btn-active-bg: var(--vg-dark);
+    --bs-btn-active-border-color: var(--vg-dark);
+    /* mon vg-dark */
+    --bs-btn-focus-shadow-rgb: 59, 43, 30;
+}
+
 .vg-container {
     max-width: 1440px;
 }
@@ -80,6 +102,7 @@ font-face : permet de définir une police d'écriture particulière chargée par
 .vg-footer {
     background-color: var(--vg-very-dark);
     color: var(--vg-beige);
+    /* mon vg-beige*/
     --bs-link-color-rgb: 247, 243, 236;
     --bs-link-hover-color-rgb: 255, 255, 255;
 }
@@ -88,7 +111,13 @@ font-face : permet de définir une police d'écriture particulière chargée par
     text-decoration: none;
 }
 
-/* focus clavier sur fond foncé (nav + footer) : contour beige */
+/* focus clavier */
+.btn:focus-visible {
+    outline: 2px solid var(--vg-dark);
+    outline-offset: 2px;
+}
+
+/* focus clavier */
 .vg-navbar :focus-visible,
 .vg-footer :focus-visible {
     outline: 2px solid var(--vg-beige);

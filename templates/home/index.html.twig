@@ -5,12 +5,21 @@
 {% block body %}
     <section class="py-4">
         <div class="container-fluid vg-container">
-            <p>Traiteur à Bordeaux depuis 25 ans</p>
-            <h1>Vos repas de fête, livrés chez vous</h1>
-            <p>Julie et José cuisinent pour tous vos événements : Noël, Pâques ou simple repas en famille. Choisissez votre menu, on s'occupe du reste.</p>
-            <a href="{{ path('app_menus') }}">Voir les menus</a>
-            <a href="#equipe">Découvrir l'équipe</a>
-            {# l'image d'un resto #}
+            <div class="row align-items-center g-4">
+                <div class="col-lg-6 text-center">
+                    <p>Traiteur à Bordeaux depuis 25 ans</p>
+                    <h1>Vos repas de fête, livrés chez vous</h1>
+                    <p>Julie et José cuisinent pour tous vos événements : Noël, Pâques ou simple repas en famille. Choisissez votre menu, on s'occupe du reste.</p>
+                    <a class="btn btn-primary my-2" href="{{ path('app_menus') }}">Voir les menus</a>
+                    <a class="btn btn-outline-dark" href="#equipe">Découvrir l'équipe</a>
+                </div>
+                <div class="col-lg-6">
+
+                    <img src="{{ asset('images/accueil.webp') }}" alt="Deux personnes trinquent au dessus d'une table dressée" width="1400" height="977" class="img-fluid rounded">
+                </div>
+
+            </div>
+
 
         </div>
     </section>
@@ -26,13 +35,13 @@
             <div>
                 <p>Note : 5 sur 5</p>
                 <blockquote>Julie nous a conseillés pour notre mariage. Des plats généreux et faits maison.</blockquote>
-                <p>Karim et léa</p>
+                <p>Karim et Léa</p>
             </div>
             <div>
                 <p>Note : 4 sur 5</p>
                 <blockquote>Très bon menu végétarien, même les plus carnivores ont aimé.</blockquote>
+                <p>Thomas R.</p>
             </div>
-            <p>Thomas R.</p>
         </div>
 
     </section>
