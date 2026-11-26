@@ -35,7 +35,7 @@ class Utilisateur
     private ?string $pays = null;
 
     #[ORM\Column(options: ['default' => true])]
-    private ?bool $actif = null;
+    private ?bool $actif = true;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
