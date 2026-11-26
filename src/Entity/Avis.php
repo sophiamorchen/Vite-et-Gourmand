@@ -7,7 +7,9 @@ use Doctrine\DBAL\Types\Types;
 // ORM : les attributs de mapping (#[ORM\Entity], #[ORM\Column]...)
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity]
+use App\Repository\AvisRepository;
+
+#[ORM\Entity(repositoryClass: AvisRepository::class)]
 class Avis
 {
     // --- Colonnes (une propriété = une colonne) ---
