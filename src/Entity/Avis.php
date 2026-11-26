@@ -30,7 +30,10 @@ class Avis
     #[ORM\Column(length: 255)]
     private ?string $statut = null;
 
-    // (commande_id : prochain cours)
+    #[ORM\OneToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Commande $commande = null;
+
 
     // --- Getter et Setters ---
 
@@ -68,6 +71,18 @@ class Avis
     public function setStatut(string $statut): static
     {
         $this->statut = $statut;
+        return $this;
+    }
+
+    public function getCommande(): ?Commande
+    {
+        return $this->commande;
+    }
+
+    public function setCommande(Commande $commande): static
+    {
+        $this->commande = $commande;
+
         return $this;
     }
 }
