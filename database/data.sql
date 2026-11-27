@@ -127,3 +127,22 @@ INSERT INTO suivi (statut, date_heure, commande_id) VALUES
 
 INSERT INTO avis (description, note, statut, commande_id) VALUES
     ('Gigot parfait et livraison à l''heure. Toute la famille a adoré !', 5, 'validé', 1);
+
+INSERT INTO utilisateur (prenom, nom, ville, telephone, email, mot_de_passe, pays, adresse, role_id) VALUES 
+    ('Annie', null, 'Bordeaux', '0102030405', 'annie.datrin@test.fr', 'password_test', 'France', '6 rue perdrix', 3),
+    ('Lary', 'Épaltron', 'Bordeaux', '0102050907', 'lary.epaltron@test.fr', 'password_test', 'France', '6 rue du professeur', 3),
+    ('Rita', 'Panfre', 'Bordeaux', '0102055557', 'rita.panfre@test.fr', 'password_test', 'France', '8 rue de la berge', 3);
+
+INSERT INTO commande (adresse_livraison, date_commande, date_prestation, heure_livraison, prix_menu, prix_livraison, ville_livraison, nb_personnes, numero, statut, pret_materiel, restitution_materiel, mode_contact, menu_id, utilisateur_id) VALUES
+    ('6 rue perdrix', '2026-02-23 09:30:21', '2026-03-01', '10:15:00', 35.00, 00.00, 'Bordeaux', 8, 'VG-6Z3M9Q2X', 'terminée', false, NULL, NULL, 1, (SELECT id FROM utilisateur WHERE email = 'annie.datrin@test.fr')),
+    ('6 rue du professeur', '2026-02-26 10:30:21', '2026-03-07', '19:15:00', 35.00, 00.00, 'Bordeaux', 4, 'VG-8M3M9Q2X', 'terminée', false, NULL, NULL, 2, (SELECT id FROM utilisateur WHERE email = 'lary.epaltron@test.fr')),
+    ('8 rue de la berge', '2026-03-29 15:30:21', '2026-04-07', '20:00:00', 45.00, 00.00, 'Bordeaux', 6, 'VG-5X3M9Q2X', 'terminée', false, NULL, NULL, 3, (SELECT id FROM utilisateur WHERE email = 'rita.panfre@test.fr')),
+    ('8 rue de la berge', '2026-04-29 14:30:21', '2026-05-07', '16:00:00', 30.00, 00.00, 'Bordeaux', 20, 'VG-6J3M9Q2X', 'terminée', false, NULL, NULL, 4, (SELECT id FROM utilisateur WHERE email = 'rita.panfre@test.fr')),
+    ('10 avenue Jean Jaurès', '2026-05-29 07:30:21', '2026-06-07', '12:00:00', 35.00, 00.00, 'Bordeaux', 8, 'VG-6J9D9Q2X', 'terminée', false, NULL, NULL, 5, (SELECT id FROM utilisateur WHERE email = 'luc.brun@test.fr'));
+
+INSERT INTO avis (description, note, statut, commande_id) VALUES
+    ('Très bon repas de Pâques, l''agneau était délicieux. Un peu de retard à la livraison.', 4, 'validé',  (SELECT id FROM commande WHERE numero = 'VG-6Z3M9Q2X')),
+    ('Des légumes frais et bien cuisinés, mais les portions étaient un peu justes pour quatre.', 3, 'validé', (SELECT id FROM commande WHERE numero = 'VG-8M3M9Q2X')),
+    ('Nul.', 1, 'refusé', (SELECT id FROM commande WHERE numero = 'VG-5X3M9Q2X')),
+    ('Buffet parfait pour nos 20 invités, tout le monde est reparti avec le sourire !', 5, 'validé', (SELECT id FROM commande WHERE numero = 'VG-6J3M9Q2X')),
+    ('Menu végan savoureux, même mon père a demandé la recette du houmous.', 4, 'en attente', (SELECT id FROM commande WHERE numero = 'VG-6J9D9Q2X'));
