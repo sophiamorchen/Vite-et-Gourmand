@@ -28,27 +28,21 @@
         <div class="container-fluid vg-container">
             <h2 class="text-center mb-5">Ces clients qui nous veulent du bien</h2>
             <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="vg-avis p-3 rounded text-center h-100">
-                        <p>Note : 5 sur 5</p>
-                        <blockquote>"Le menu de Noël était parfait, tout le monde s'est régalé. Livraison à l'heure."</blockquote>
-                        <p class="mb-0">Claire M.</p>
+                {% for avis in derniersAvis %}
+                    <div class="col-md-4">
+                        <div class="vg-avis p-3 rounded text-center h-100">
+                            <p><span aria-hidden="true">{% for i in 1..5 %}{% if i <= avis.note %}★{% else %}☆{% endif %}{% endfor %}</span><span class="visually-hidden">Note : {{ avis.note }} sur 5</span></p>
+                            
+                            <blockquote>«&nbsp;{{ avis.description }}&nbsp;»</blockquote>
+                            <p class="mb-0">{{ avis.commande.utilisateur.prenom }}  {% if avis.commande.utilisateur.nom %}{{ avis.commande.utilisateur.nom|first }}.{% endif %}</p>
+               
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="vg-avis p-3 rounded text-center h-100">
-                        <p>Note : 5 sur 5</p>
-                        <blockquote>"Julie et José ont confectionné notre repas de mariage. Des plats généreux et faits maison."</blockquote>
-                        <p class="mb-0">Karim et Léa</p>
+                {% else %}
+                    <div class="col-12">
+                        <p class="text-center mb-0">Aucun avis pour le moment</p>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="vg-avis p-3 rounded text-center h-100">
-                        <p>Note : 4 sur 5</p>
-                        <blockquote>"Très bon menu végétarien, même les plus carnivores ont aimé."</blockquote>
-                        <p class="mb-0">Thomas R.</p>
-                    </div>
-                </div>              
+                {% endfor %}
             </div>
         </div>
     </section>
